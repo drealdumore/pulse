@@ -19,11 +19,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` ${font.className} antialiased`}>
+      <body className={`${font.className} antialiased`}>
         <Toaster />
 
-        <div className="flex items-center justify-center pt-32 px-8 md:px-32 min-h-screen lg:pt-36 2xl:pt-44 container max-w-4xl lg:max-w-6xl 2xl:max-w-7xl mx-auto">
-          {children}
+        <div className="flex items-center justify-center p-5 md:px-32 min-h-screen lg:pt-36 2xl:pt-44 container max-w-4xl lg:max-w-6xl 2xl:max-w-7xl mx-auto">
+          <div className="container max-w-4xl lg:max-w-6xl 2xl:max-w-7xl">
+            {children}
+          </div>
         </div>
       </body>
     </html>

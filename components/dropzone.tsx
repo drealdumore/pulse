@@ -1,6 +1,5 @@
 "use client";
 
-import { FiUploadCloud } from "react-icons/fi";
 import { LuFileSymlink } from "react-icons/lu";
 import { MdClose } from "react-icons/md";
 import ReactDropzone from "react-dropzone";
@@ -217,7 +216,6 @@ export default function Dropzone() {
     setIsReady(tmp_is_ready);
   };
 
-
   const deleteAction = (action: Action): void => {
     setActions(actions.filter((elt) => elt !== action));
     setFiles(files.filter((elt) => elt.name !== action.file_name));
@@ -242,10 +240,9 @@ export default function Dropzone() {
     setIsLoaded(true);
   };
 
-  
   if (actions.length) {
     return (
-      <div className="space-y-6 px-8">
+      <div className="space-y-6">
         {actions.map((action: Action, i: any) => (
           <div
             key={i}
@@ -255,10 +252,10 @@ export default function Dropzone() {
               <Skeleton className="h-full w-full -ml-10 cursor-progress absolute rounded-xl" />
             )}
             <div className="flex gap-4 items-center">
-              <span className="text-2xl text-orange-600">
+              <span className="text-2xl text-[#ffffe3]">
                 {fileToIcon(action.file_type)}
               </span>
-              <div className="flex items-center gap-1 w-96">
+              <div className="flex items-center gap-1 w-max">
                 <span className="text-md font-medium overflow-x-hidden">
                   {compressFileName(action.file_name)}
                 </span>
@@ -269,17 +266,17 @@ export default function Dropzone() {
             </div>
 
             {action.is_error ? (
-              <Badge variant="destructive" className="flex gap-2">
+              <Badge variant="destructive" className="flex gap-2 rounded-xl">
                 <span>Error Converting File</span>
                 <BiError />
               </Badge>
             ) : action.is_converted ? (
-              <Badge variant="default" className="flex gap-2 bg-green-500">
+              <Badge variant="default" className="flex gap-2 bg-green-500 rounded-xl">
                 <span>Done</span>
                 <MdDone />
               </Badge>
             ) : action.is_converting ? (
-              <Badge variant="default" className="flex gap-2">
+              <Badge variant="default" className="flex gap-2 rounded-xl">
                 <span>Converting</span>
                 <span className="animate-spin">
                   <ImSpinner3 />
@@ -451,7 +448,7 @@ export default function Dropzone() {
       {({ getRootProps, getInputProps }) => (
         <div
           {...getRootProps()}
-          className=" bg-background h-44 lg:h-80 xl:h-96 rounded-3xl shadow-sm border-secondary border-2 border-dashed cursor-pointer flex items-center justify-center"
+          className=" ring-4 ring-[#ffffe3]/5 h-[8rem] lg:h-40 xl:h-56 rounded-xl border-2 border-dashed border-[#ffffe3]/2 cursor-pointer flex items-center justify-center"
         >
           <input {...getInputProps()} />
           <div className="space-y-4 text-foreground">
@@ -466,11 +463,16 @@ export default function Dropzone() {
               </>
             ) : (
               <>
-                <div className="justify-center flex text-3xl">
-                  <FiUploadCloud />
+                <div className="justify-center flex">
+                  <div className="p-2 bg-yellow-100 rounded-full">
+                    <UploadIcon />
+                  </div>
                 </div>
-                <h3 className="text-center font-medium text-xl">
-                  Click, or drop your files here
+                <h3 className="text-center font-medium text-[14px]">
+                  <span className="text-[#cece78] hover:text-[#8c8c61]">
+                    Click here,{" "}
+                  </span>
+                  to upload your file or drag and drop.
                 </h3>
               </>
             )}
@@ -480,3 +482,38 @@ export default function Dropzone() {
     </ReactDropzone>
   );
 }
+
+const UploadIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      className="size-8"
+      color="#0e100f"
+    >
+      <path
+        d="M13 2H18C19.1046 2 20 2.89543 20 4V15.0145L12.9986 22.0015H6C4.89543 22.0015 4 21.1061 4 20.0015V12"
+        stroke="#0e100f"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></path>
+      <path
+        d="M20 15H15C13.8954 15 13 15.8954 13 17V22"
+        stroke="#0e100f"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      ></path>
+      <path
+        d="M10 5L7 2L4 5M7 10V2.60878"
+        stroke="#0e100f"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></path>
+    </svg>
+  );
+};

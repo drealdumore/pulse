@@ -7,12 +7,9 @@ body {
 }
 
 @layer base {
-  * {
-    @apply border-border;
-    background: #0e100f;
-    color: #ffffe3;
-  }
   body {
-    @apply bg-background text-foreground;
+    background-color: #0e100f;
+    color: #ffffe3;
+    /* color: #ffffe3; */
   }
 }
