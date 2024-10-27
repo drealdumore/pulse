@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    background: #0e100f;
+    color: #ffffe3;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
