@@ -37,7 +37,7 @@ To get started with **Pulse**, follow the steps below:
 ### Clone the Repository
 
 \`\`\`bash
-git clone https://github.com/your-username/pulse.git
+git clone https://github.com/drealdumore/pulse.git
 cd pulse
 \`\`\`
 
